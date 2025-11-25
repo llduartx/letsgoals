@@ -1,6 +1,6 @@
 // REACT E NEXT IMPORTS ---------------------------------------------------------
 import React, { useEffect, useState } from 'react'
-import { set, useForm } from 'react-hook-form'
+import { useForm } from 'react-hook-form'
 import { useAuth } from '../../../context/usuarioContext'
 import { useNavigate } from 'react-router'
 
@@ -15,14 +15,17 @@ import Subtitulo from '../../../components/Layout/Subtitulo'
 export default function Contribuir() {
 
   // VARIAVEIS E FUNÇÕES GERAIS -------------------------------------------------
-  const { usuarioLogado, isAuthLoading } = useAuth()
+  const { usuarioLogado, isAuthLoading, login, logout } = useAuth()
   const { register, reset, handleSubmit, formState: { errors } } = useForm()
   const navigate = useNavigate()
+
   const [metasUsuario, setMetasUsuario] = React.useState([])
   const [saldoMeta, setSaldoMeta] = useState(0);
   const [metaContribuida, setMetaContribuida] = useState('');
-  const [MostrarMensagemContribuicao, setMostrarMensagemContribuicao] = useState(false);
+  const [mostrarMensagemContribuicao, setMostrarMensagemContribuicao] = useState(false);
   const [valorAlvoMeta, setValorAlvoMeta] = useState(0);
+  const [saldoDoUsuario, setSaldoDoUsuario] = useState(usuarioLogado.saldoUsuario);
+  const [usuario, setUsuario] = useState(usuarioLogado);
 
   // INICIALIZAÇÃO DA PÁGINA ---------------------------------------------------
   useEffect(() => {
@@ -39,90 +42,35 @@ export default function Contribuir() {
           return response.json();
         })
         .then((participacoes) => {
-          // Extrai os IDs das Metas que o usuário participa
           const metaIds = participacoes.map((p) => p.metaId);
 
           // Requisita as Metas do usuário com base nos IDs
-          const promises = metaIds.map((id) =>
-            fetch(`http://localhost:3000/metas/${id}`)
-              .then((res) => {
+          return Promise.allSettled(
+            metaIds.map((id) =>
+              fetch(`http://localhost:3000/metas/${id}`).then((res) => {
                 if (!res.ok) {
                   throw new Error(`Erro ao buscar meta com ID ${id}`);
                 }
                 return res.json();
               })
+            )
           );
-          Promise.all(promises)
-            .then((metas) => setMetasUsuario(metas))
-            .catch((error) => console.error("Erro ao carregar metas:", error));
         })
-        .catch((error) => console.error("Erro ao carregar participações:", error));
-
+        .then((results) => {
+          const metas = results
+            .filter((result) => result.status === "fulfilled")
+            .map((result) => result.value);
+          setMetasUsuario(metas);
+        })
+        .catch((error) => console.error("Erro ao carregar dados do usuário:", error));
     } else {
       navigate("/login");
     }
   }, [isAuthLoading, usuarioLogado, navigate]);
 
-
-
-  // REGISTRO DA CONTRIBUIÇÃO ----------------------------------------------------
-
-  async function registrarContribuicao(data) {
-    if (!usuarioLogado) return;
-
-    // Criando variáveis para a envio
-    const meta = data.meta;
-    const valor = data.valor;
-    const datahora = new Date().toISOString();
-
-    try {
-      const resposta = await fetch('http://localhost:3000/contribuicoes', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          metaId: meta,
-          usuarioId: usuarioLogado.id,
-          valor: parseFloat(valor),
-          data: datahora,
-        }),
-      });
-      // Ajustei a lógica para verificar se o saldo atualizado da meta atinge o valor alvo após a nova contribuição.
-      const saldoAtualizado = saldoMeta + parseFloat(valor);
-      if (saldoAtualizado === valorAlvoMeta) {
-        // Atualiza o status da meta para 'concluida'
-        await fetch(`http://localhost:3000/metas/${meta}`, {
-          method: 'PATCH',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            status: 'Concluída',
-          }),
-        });
-      }
-      if (!resposta.ok) {
-        throw new Error('Erro ao registrar contribuição');
-      }
-
-      // Requisitar o título da meta contribuída
-      const metaContribuidaData = metasUsuario.find((m) => m.id === meta);
-      setMetaContribuida(metaContribuidaData?.titulo || '');
-      // Requisitar o valor total da meta contribuída
-      const valorTotalMeta = metasUsuario.find((m) => m.id === meta)?.valorAlvo || 0;
-      setValorAlvoMeta(valorTotalMeta)
-
-      // Mostar mensagem de contribuição registrada por 3 segundos
-      setMostrarMensagemContribuicao(true);
-      setTimeout(() => setMostrarMensagemContribuicao(false), 3000);
-    } catch (error) {
-      console.error('Erro ao registrar contribuição:', error);
-    }
-    reset();
-  }
-
-  // Função para atualizar o saldo da meta ao mudar a seleção
+  
+  // ALTERANDO VISUALIZAÇÃO DE META ----------------------------------------------------
+  
   const selectMetaValor = (event) => {
     const idMeta = event.target.value;
 
@@ -136,15 +84,98 @@ export default function Contribuir() {
           throw new Error("Erro ao buscar contribuições da meta");
         }
         return response.json();
-      })
-      .then((contribuicoes) => {
-        const totalContribuicoes =
-          contribuicoes.reduce((total, contrib) =>
-            total + contrib.valor, 0);
-        setSaldoMeta(totalContribuicoes);
-      })
-      .catch((error) => console.error("Erro ao calcular saldo da meta:", error));
+      });
   };
+
+
+  // REGISTRO DA CONTRIBUIÇÃO ----------------------------------------------------
+  async function registrarContribuicao(data) {
+
+    // Variáveis da contribuição
+    const meta = data.meta;
+    const valor = parseFloat(data.valor);
+    // Outras variáveis
+    const datahora = new Date().toISOString();
+  const saldoUsuario = usuarioLogado.saldoUsuario;
+
+    // CRIANDO CONTRIBUIÇÃO -------------------------------------------------
+    try {
+      const resposta = await fetch("http://localhost:3000/contribuicoes", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          metaId: meta,
+          usuarioId: usuarioLogado.id,
+          valor,
+          data: datahora,
+        }),
+      });
+      if (!resposta.ok) {
+        throw new Error("Erro ao registrar contribuição");
+      }
+      
+
+      // ALTERANDO STATUS DA META, SE NECESSÁRIO ---------------------------------------------
+      // Calcula o novo saldo da meta após a contribuição
+      const saldoMetaAtualizado = (saldoMeta || 0) + valor;
+      const diferenca = Math.abs(saldoMetaAtualizado - valorAlvoMeta);
+      // Verifica se o saldo atualizado é maior ou igual ao valor alvo, considerando uma margem de erro para números decimais
+      if (saldoMetaAtualizado >= valorAlvoMeta || diferenca < 0.01) {
+        const respPatchMeta = await fetch(`http://localhost:3000/metas/${meta}`, {
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ status: "Concluída" }),
+        });
+        if (!respPatchMeta.ok) console.error('Falha ao atualizar status da meta', await respPatchMeta.text());
+      }
+
+
+      // ATUALIZANDO SALDO DO USUÁRIO -------------------------------------------------
+      const saldoCalculado = (Number(saldoDoUsuario) || Number(usuarioLogado.saldoUsuario) || 0) - Number(valor);
+      
+      // Pro saldo não ficar negativo (mínimo 0)
+  const saldoUsuarioAtualizado = saldoCalculado < 0 ? 0 : saldoCalculado;
+      setSaldoDoUsuario(saldoUsuarioAtualizado);
+      const respostaAlterarSaldo = await fetch(`http://localhost:3000/usuarios/${usuarioLogado.id}`, {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ saldoUsuario: saldoUsuarioAtualizado }),
+      });
+      if (!respostaAlterarSaldo.ok) {
+        console.error('Falha ao atualizar usuário', await respostaAlterarSaldo.text());
+      } else {
+        // Atualiza o estado local do usuário antes de re-logar para garantir que o contexto receba o novo saldo
+        const usuarioAtualizado = { ...usuario, saldoUsuario: saldoUsuarioAtualizado };
+        setUsuario(usuarioAtualizado);
+        // refresh do contexto: faz logout e login com o usuário atualizado
+        try {
+          logout();
+          login(usuarioAtualizado);
+        } catch (e) {
+          console.warn('Erro ao reiniciar sessão para atualizar contexto:', e);
+        }
+      }
+      
+
+      const metaContribuidaData = metasUsuario.find((m) => m.id === meta);
+      setMetaContribuida(metaContribuidaData?.titulo || "");
+      setValorAlvoMeta(metaContribuidaData?.valorAlvo || 0);
+      
+      setMostrarMensagemContribuicao(true);
+      setTimeout(() => setMostrarMensagemContribuicao(false), 3000);
+      
+    } catch (error) {
+      console.error("Erro ao registrar contribuição:", error);
+    } finally {
+      reset();
+    }
+  }
 
   // RENDERIZAÇÃO DO COMPONENTE -------------------------------------------------
   return (
@@ -169,16 +200,37 @@ export default function Contribuir() {
 
               <select
                 id="meta"
-                name="meta"
-                autoComplete="meta"
-                className="col-start-1 row-start-1 appearance-none rounded-md bg-white py-2 pr-4 pl-4 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 focus:outline-2 focus:-outline-offset-2 focus:outline-verdescuro"
                 {...register("meta", {
                   required: "Você precisa selecionar uma meta",
-                  validate: {
-                    metaValida: (v) => v !== "Selecione uma meta" || "Selecione uma meta válida",
+                  onChange: (event) => {
+                    const idMeta = event.target.value;
+                    if (idMeta === "Selecione uma meta") {
+                      setSaldoMeta(0);
+                      setValorAlvoMeta(0);
+                      return;
+                    }
+
+                    // Atualiza saldoMeta e valorAlvoMeta com base na meta selecionada
+                    const metaSelecionada = metasUsuario.find((meta) => meta.id === idMeta);
+                    setValorAlvoMeta(metaSelecionada?.valorAlvo || 0);
+
+                    fetch(`http://localhost:3000/contribuicoes?metaId=${idMeta}`)
+                      .then((response) => {
+                        if (!response.ok) {
+                          throw new Error("Erro ao buscar contribuições da meta");
+                        }
+                        return response.json();
+                      })
+                      .then((contribuicoes) => {
+                        const totalContribuido = contribuicoes.reduce((acc, curr) => acc + curr.valor, 0);
+                        setSaldoMeta(totalContribuido);
+                      })
+                      .catch((error) => {
+                        console.error("Erro ao calcular saldo da meta:", error);
+                        setSaldoMeta(0);
+                      });
                   },
                 })}
-                onChange={selectMetaValor}
               >
                 <option value="Selecione uma meta">Selecione uma meta</option>
                 {metasUsuario.map((meta) => (
@@ -235,11 +287,8 @@ export default function Contribuir() {
               validate: {
                 maiorQueZero: (v) => v > 0 || "Verifique o valor informado",
                 menorQueValorAlvo: (v) =>
-                  v <= (valorAlvoMeta - saldoMeta) || `O valor não pode ser maior que R$ ${(valorAlvoMeta - saldoMeta).toFixed(2)}`,
-              },
-            })}
+                  v <= (valorAlvoMeta - saldoMeta) || `O valor não pode ser maior que ${(valorAlvoMeta - saldoMeta).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL', minimumFractionDigits: 2,maximumFractionDigits: 2 })}`},})}
           />
-
           {errors.valor && (
             <p className="text-red-500 text-sm mt-1">{errors.valor.message}</p>
           )}
@@ -259,7 +308,7 @@ export default function Contribuir() {
 
       </form>
 
-      {MostrarMensagemContribuicao && (
+      {mostrarMensagemContribuicao && (
         <div className='text-center'>
           <Subtitulo className="text-center" texto={`Bem demais! Você contribuiu na Meta ${metaContribuida}`} />
         </div>
@@ -267,5 +316,5 @@ export default function Contribuir() {
 
       <Footer />
     </div >
-  )
+  );
 }

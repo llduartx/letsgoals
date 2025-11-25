@@ -27,13 +27,13 @@ export default function Ajuda() {
       <Headers />
       <h1 className="p-6 text-3xl font-bold mb-4 text-center">🧭 Bem-vindo ao LetsGoals!</h1>
 
-      <p className="mb-6 text-justify">
+      <p className="mb-6 text-justify px-4">
         O <strong>LetsGoals</strong> foi criado para transformar o jeito como você e seus amigos realizam
         <strong> objetivos financeiros em grupo</strong>. Seja uma viagem, um evento ou uma compra importante,
         aqui vocês organizam tudo de forma simples, transparente e divertida!
       </p>
 
-      <section className="mb-8">
+      <section className="mb-8 px-4">
         <h2 className="text-2xl font-semibold mb-2">💡 O que é o LetsGoals</h2>
         <p>
           O LetsGoals é um aplicativo que funciona como um <strong>cofrinho coletivo digital</strong>.
@@ -47,7 +47,7 @@ export default function Ajuda() {
         </p>
       </section>
 
-      <section className="mb-8">
+      <section className="mb-8 px-4">
         <h2 className="text-2xl font-semibold mb-2">🚀 Como funciona</h2>
         <ol className="list-decimal list-inside space-y-2">
           <li><strong>Crie sua meta:</strong> escolha um objetivo coletivo, defina um nome, o valor total e o prazo.</li>
@@ -57,7 +57,7 @@ export default function Ajuda() {
         </ol>
       </section>
 
-      <section className="mb-8">
+      <section className="mb-8 px-4">
         <h2 className="text-2xl font-semibold mb-2">👥 Exemplos de uso</h2>
         <ul className="list-disc list-inside space-y-1">
           <li>🌴 Viagem em grupo com amigos</li>
@@ -68,7 +68,7 @@ export default function Ajuda() {
         </ul>
       </section>
 
-      <section className="mb-8">
+      <section className="mb-8 px-4">
         <h2 className="text-2xl font-semibold mb-2">🔒 Segurança e privacidade</h2>
         <ul className="list-disc list-inside space-y-1">
           <li>As senhas são armazenadas com criptografia segura.</li>
@@ -77,7 +77,7 @@ export default function Ajuda() {
         </ul>
       </section>
 
-      <section className="mb-8">
+      <section className="mb-8 px-4">
         <h2 className="text-2xl font-semibold mb-2">📱 Dicas rápidas</h2>
         <ul className="list-disc list-inside space-y-1">
           <li>Use nomes claros para suas metas (ex: <em>Viagem Florianópolis 2025</em>).</li>
@@ -86,7 +86,7 @@ export default function Ajuda() {
         </ul>
       </section>
 
-      <section>
+      <section className="mb-8 px-4">
         <h2 className="text-2xl font-semibold mb-2">💬 Precisa de ajuda?</h2>
         <p>
           Se surgir alguma dúvida, entre em contato pelo nosso suporte dentro do app

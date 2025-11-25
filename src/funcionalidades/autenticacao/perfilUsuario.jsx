@@ -4,18 +4,37 @@ import Header from "../../components/Layout/Header";
 import Footer from "../../components/Layout/Footer";
 import { useForm } from "react-hook-form";
 import { useAuth } from "../../context/usuarioContext";
+import FormatarReais from "../../components/Layout/FormatarReais";
 
 export default function PerfilUsuario() {
+    
     const { id } = useParams();
+    const { login } = useAuth();
     const [usuario, setUsuario] = useState(null);
     const [error, setError] = useState(null);
+
+    useEffect(() => {
+        if (id) {
+            fetch(`http://localhost:3000/usuarios/${id}`)
+                .then((response) => {
+                    if (!response.ok) {
+                        throw new Error("Erro ao buscar dados do usuário");
+                    }
+                    return response.json();
+                })
+                .then((data) => setUsuario(data))
+                .catch((err) => setError(err.message));
+        }
+    }, [id]);
+
+    // VARIAVEIS ----------------------------------------------------------------
     const {
         register,
         handleSubmit,
         reset,
         formState: { errors },
-    } = useForm();
-    const { login } = useAuth();
+    } = useForm()
+    
     const [alterarInformacoes, setAlterarInformacoes] = useState(false);
 
     const toggleAlterarInformacoes = () => {
@@ -43,25 +62,13 @@ export default function PerfilUsuario() {
             const usuarioAtualizado = await resposta.json();
             setUsuario(usuarioAtualizado);
             reset();
-            login();
+            login(usuarioAtualizado);
         } catch (erro) {
             console.error(`❌ Erro: ${erro.message}`);
         }
     }
 
-    useEffect(() => {
-        if (id) {
-            fetch(`http://localhost:3000/usuarios/${id}`)
-                .then((response) => {
-                    if (!response.ok) {
-                        throw new Error("Erro ao buscar dados do usuário");
-                    }
-                    return response.json();
-                })
-                .then((data) => setUsuario(data))
-                .catch((err) => setError(err.message));
-        }
-    }, [id]);
+
 
     if (error) {
         return <p>{error}</p>;
@@ -93,6 +100,7 @@ export default function PerfilUsuario() {
                                     <input
                                         type="text"
                                         className="block w-60 rounded-md bg-white px-4 py-2 text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-verdeescuro"
+                                        value={usuario.nomeUsuario}
                                         {...register("nome", {
                                             required: "Informe o novo nome de usuário",
                                         })}
@@ -112,6 +120,12 @@ export default function PerfilUsuario() {
                             </p>
                         </div>
 
+                        <div className="mt-2">
+                            <p>
+                                <strong>Saldo em conta:</strong> <FormatarReais valor={usuario.saldoUsuario} />
+                            </p>
+                        </div>
+
                         <div className="flex-col mb-2">
                             <div className="flex gap-2 items-center">
                                 <strong>Idade:</strong> {usuario.idadeUsuario}
@@ -121,6 +135,7 @@ export default function PerfilUsuario() {
                                     <input
                                         type="text"
                                         className="block w-60 rounded-md bg-white px-4 py-2 text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-verdeescuro"
+                                        value={usuario.idadeUsuario}
                                         {...register("idade", {
                                             required: "Informe sua idade",
                                         })}
@@ -145,6 +160,7 @@ export default function PerfilUsuario() {
                                     <input
                                         type="text"
                                         className="block w-60 rounded-md bg-white px-4 py-2 text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-verdeescuro"
+                                        value={usuario.imagemUsuario}
                                         {...register("imagem", {
                                             required: "Adicione sua imagem",
                                         })}

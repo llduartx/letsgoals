@@ -5,6 +5,7 @@ import { Link } from "react-router";
 import React from "react";
 
 import FormatarReais from "../../../../components/Layout/FormatarReais";
+import GraficoMeta from "../Components/BarcChart"
 
 export default function ListaMetas() {
     const { usuarioLogado } = useAuth();
@@ -73,29 +74,29 @@ export default function ListaMetas() {
                                 <img
                                     src={meta.imagem}
                                     alt={meta.titulo}
-                                    className="w-20 h-20 object-cover rounded-md mr-4"
+                                    className="w-20 h-20 object-cover rounded-md"
                                 />
                                 <Link
                                     to={{
                                         pathname: `/meta-detalhes/${meta.id}`,
                                         state: { meta },
                                     }}
-                                    className="block hover:underline"
+                                    className="block hover:underline flex-1 min-w-0 ml-4"
                                 >
-                                    <h3 className="text-base font-semibold">
+                                    <h3 className="text-base font-semibold ">
                                         {meta.titulo}
 
                                     </h3>
                                     <p className="text-md">Contribuído: <FormatarReais valor={totalContribuido} /></p>
                                     <p className="text-md">Valor Alvo: <FormatarReais valor={meta.valorAlvo} /></p>
-                                    <p>Progresso da Meta: [ █ █ █ ] </p>
+                                        <GraficoMeta total={meta.valorAlvo} atual={totalContribuido} />
                                 </Link>
                             </li>
                         );
                     })}
                 </ul>
             ) : (
-                <p>Você ainda não possui metas cadastradas.</p>
+                <p className="space-y-4 mx-4 italic">Você ainda não possui metas cadastradas.</p>
             )}
         </div>
     );

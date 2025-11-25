@@ -137,7 +137,7 @@ export default function CriarMetaForm() {
                 id="tipo"
                 name="tipo"
                 autoComplete="tipo"
-                className="col-start-1 row-start-1 appearance-none rounded-md bg-white py-2 pr-4 pl-4 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 focus:outline-2 focus:-outline-offset-2 focus:outline-verdescuro"
+                className="col-start-1 row-start-1 bg-white appearance-none rounded-md py-2 pr-4 pl-4 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 focus:outline-2 focus:-outline-offset-2 focus:outline-verdescuro"
                 {...register("tipoMeta")}>
                 <option value="" disabled className="text-sm">Selecione o tipo:</option>
                 <option value="Viagem" className="text-sm">Viagem</option>
@@ -166,7 +166,7 @@ export default function CriarMetaForm() {
             id="titulo"
             type="text"
             name="metaTitulo"
-            className="block rounded-md bg-white px-4 py-2 text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-verdeescuro"
+            className="block bg-white rounded-md px-4 py-2 text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-verdeescuro"
             {...register("metaTitulo",
               { required: "Sua meta precisa de um nome" })}
           />
@@ -186,7 +186,7 @@ export default function CriarMetaForm() {
             type="number"
             step="0.01"
             name="valorAlvo"
-            className="block rounded-md bg-white px-4 py-2 text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-verdeescuro"
+            className="block bg-white rounded-md px-4 py-2 text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-verdeescuro"
             {...register("valorAlvo",
               { required: "Você precisa indicar um valor final" })}
           />
@@ -208,7 +208,7 @@ export default function CriarMetaForm() {
                 id="periodoConclusao"
                 name="periodoConclusao"
                 autoComplete="periodoConclusao"
-                className="col-start-1 row-start-1 appearance-none rounded-md bg-white py-2 pr-4 pl-4 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 focus:outline-2 focus:-outline-offset-2 focus:outline-verdescuro"
+                className="col-start-1 row-start-1 bg-white appearance-none rounded-md py-2 pr-4 pl-4 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 focus:outline-2 focus:-outline-offset-2 focus:outline-verdescuro"
                 {...register("periodoConclusao")}>
                 <option value="" disabled className="text-sm">Selecione um período</option>
                 <option value="3" className="text-sm">3 meses</option>
@@ -229,7 +229,7 @@ export default function CriarMetaForm() {
         <div className="form__botoes  flex p-4 justify-center gap-4 mt-12">
 
           <input
-            className=" bg-branco text-textop py-3 px-9 text-md rounded-full flex items-center text-center font-bold cursor-pointer hover:text-textos hover:outline-1"
+            className="text-textop py-3 px-9 text-md rounded-full flex items-center text-center font-bold cursor-pointer hover:text-textos hover:outline-1"
             type="reset"
             value="Limpar" />
 

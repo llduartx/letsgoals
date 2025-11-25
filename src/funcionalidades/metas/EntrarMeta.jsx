@@ -89,7 +89,7 @@ function Pesquisa() {
         <h5>Valor alvo: R$ {meta.valorAlvo}</h5>
         
         <button 
-          className="p-2 m-2 bg-verde text-white font-bold no-underline rounded-lg border-0" 
+          className="cursor-pointer p-2 m-2 bg-verde hover:bg-verdeescuro text-white font-bold no-underline rounded-lg border-0" 
           onClick={() => registrarParticipacaoENavegar(meta.id)} 
         >
           Entrar

@@ -10,7 +10,7 @@ import { useNavigate } from "react-router";
 import { useEffect } from "react";
 
 export default function Home() {
-  const { usuarioLogado, isAuthLoading } = useAuth()
+  const { usuarioLogado, isAuthLoading, logout, login } = useAuth()
   const navigate = useNavigate()
 
   useEffect(() => {
@@ -20,7 +20,7 @@ export default function Home() {
       }
     }
   }, [usuarioLogado, isAuthLoading, navigate])
-
+    
   if (isAuthLoading) {
     return <p className="pt-40 text-center">Carregando...</p>
   }

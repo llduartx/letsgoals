@@ -1,83 +1,70 @@
 🔶 Backlog de Funcionalidades (por Requisito)
-
 Legenda de Status
 🟡 FAZER: Tarefa no backlog, pronta para ser iniciada.
 📝 FAZENDO: Tarefa em desenvolvimento ativo.
 ✅ CONCLUÍDO: Tarefa finalizada, testada e entregue.
+-------------------------------------------------------------------------------------------------------
 
------------------------------------------------------------------------------------------------------------
-
-🔶 RF_01: Gerenciar Perfil de Usuário
-O sistema deve permitir que um usuário crie uma conta (cadastro), realize autenticação (login/logout)
-e visualize seus dados.
-✅ Cadastro de Usuário
-✅ FAZER: Login de usuário
-✅ FAZER: Perfil de usuário - Visualização de dados
-
-🔶 RF_02: Criar Meta Colaborativa
-O sistema deve permitir que um usuário autenticado crie uma nova meta (grupo), definindo título,
-valor-alvo, data de conclusão e gerando um link de convite.
-✅ FAZER: [Front-end] Implementar formulário de criação de meta (título, valor, períodos, participantes).
-✅ FAZER: [Back-end] Criar endpoint para salvar a nova meta no banco de dados -máximo 3 metas por usuário.
-✅ FAZER: [Back-end] Implementar lógica para gerar link de convite exclusivo - Informar ID da Meta.
-
-🔶 RF_03: Adesão à Meta
-O sistema deve permitir que um usuário, por meio de um link de convite, visualize os detalhes de uma
-meta e confirme sua participação nela.
-⚪ FAZER: [Front-end] Criar página de "convite" que exibe detalhes da meta para não-membros - através do ID.
-🟡 FAZER: [Front-end] Implementar botão/ação de "Confirmar Participação".
-🟡 FAZER: [Back-end] Criar endpoint para adicionar o usuário à meta - push array "idParticipantes".
-
-🔶 RF_04: Visualizar Detalhes da Meta
-O sistema deve permitir que os participantes visualizem o progresso geral, o valor da contribuição
-individual e a lista de todos os integrantes da meta.
-🟡 FAZER: [Front-end] Criar o componente "Dashboard da Meta" (página principal).
-🟡 FAZER: [Front-end] Implementar gráfico/barra de progresso geral - chart.js
-🟢 FAZER: [Front-end] Implementar componente para listar integrantes e seus status de contribuição.
-🟢 FAZER: [Back-end] Criar endpoint que retorna todos os dados da meta (progresso, membros,
-etc.).
-
+🟢 RF_01: Gerenciar Perfil de Usuário
+    O sistema deve permitir que um usuário crie uma conta (cadastro), realize autenticação (login/logout)
+    e visualize seus dados.
+    ✅ Cadastro de Usuário
+    ✅ FAZER: Login de usuário
+    ✅ FAZER: Perfil de usuário - Visualização de dados
+🟢 RF_02: Criar Meta Colaborativa
+    O sistema deve permitir que um usuário autenticado crie uma nova meta (grupo), definindo título,
+    valor-alvo, data de conclusão e gerando um link de convite.
+    ✅ FAZER: [Front-end] Implementar formulário de criação de meta (título, valor, períodos, participantes).
+    ✅ FAZER: [Back-end] Criar endpoint para salvar a nova meta no banco de dados -máximo 3 metas por usuário.
+    ✅ FAZER: [Back-end] Implementar lógica para gerar link de convite exclusivo - Informar ID da Meta.
+🟢 RF_03: Adesão à Meta
+    O sistema deve permitir que um usuário, por meio de um link de convite, visualize os detalhes de uma
+    meta e confirme sua participação nela.
+    ✅ FAZER: [Front-end] Criar página de "convite" que exibe detalhes da meta para não-membros - através do ID.
+    ✅ FAZER: [Front-end] Implementar botão/ação de "Confirmar Participação".
+    ✅ FAZER: [Back-end] Criar endpoint para adicionar o usuário à meta
+🟢 RF_04: Visualizar Detalhes da Meta
+    O sistema deve permitir que os participantes visualizem o progresso geral, o valor da contribuição
+    individual e a lista de todos os integrantes da meta.
+    🟢 FAZER: [Front-end] Criar o componente "Dashboard da Meta" (página principal).
+    🟢 FAZER: [Front-end] Implementar gráfico/barra de progresso geral - chart.js
+    🟢 FAZER: [Front-end] Implementar componente para listar integrantes e seus status de contribuição.
+    🟢 FAZER: [Back-end] Criar endpoint que retorna todos os dados da meta (progresso, membros,
+    etc.).
 🔶 RF_05: Atualizar Progresso da Meta
-O sistema deve recalcular e atualizar automaticamente o valor total arrecadado e o gráfico de
-progresso após o registro de uma nova contribuição, adesão ou remoção de um membro.
-🟡 FAZER: [Back-end] Criar função centralizada para recalcular o progresso da meta.
-🟡 FAZER: [Back-end] Acionar recálculo ao adicionar novo membro (RF_03).
-🟡 FAZER: [Back-end] Acionar recálculo ao remover membro (RF_06).
-🟡 FAZER: [Back-end] Acionar recálculo ao registrar contribuição (RF_09).
-🟡 FAZER: [Front-end] Garantir que o "Dashboard da Meta" (RF_04) seja reativo a essas
+    O sistema deve recalcular e atualizar automaticamente o valor total arrecadado e o gráfico de progresso após o registro de uma nova contribuição, adesão ou remoção de um membro.
+    🟡 FAZER: [Back-end] Criar função centralizada para recalcular o progresso da meta.
+    🟡 FAZER: [Back-end] Acionar recálculo ao adicionar novo membro (RF_03).
+    🟡 FAZER: [Back-end] Acionar recálculo ao remover membro (RF_06).
+    🟡 FAZER: [Back-end] Acionar recálculo ao registrar contribuição (RF_09).
+    🟡 FAZER: [Front-end] Garantir que o "Dashboard da Meta" (RF_04) seja reativo a essas
 mudanças.
-
-🔶 RF_06: Remover Participante
-O sistema deve permitir que o líder da meta remova um participante do grupo, acionando as regras de
-penalidade.
-🟡 FAZER: [Front-end] Adicionar botão "Remover" na lista de integrantes (visível apenas para o
-líder). - o lider é o "idParticipantes" indice 0 o primeiro a ser listado.
-🟡 FAZER: [Back-end] Criar endpoint DELETE /meta/:id/participante/:userId .
-🟡 FAZER: [Back-end] Implementar validação de permissão (verificar se o solicitante é o líder - indice 0 do idParticipante).
-
-🔶 RF_07: Aplicar Regra de Penalidade
-Ao remover um participante, o sistema deve calcular a penalidade (ex: 20% do valor já contribuído) e
-aplicar esse valor ao saldo total da meta.
-🟡 FAZER: [Back-end] Implementar lógica de cálculo de penalidade (20%) no momento da
-remoção (RF_06).
-🟡 FAZER: [Back-end] Garantir que o valor da penalidade seja aplicado ao saldo total da meta.
-🟡 FAZER: [Back-end] Garantir que esta operação seja atômica (feita em uma transação).
-
+🟢 RF_06: Remover Participante
+    O sistema deve permitir que o líder da meta remova um participante do grupo, acionando as regras de
+    penalidade.
+    🟢 FAZER: [Front-end] Adicionar botão "Remover" na lista de integrantes (visível apenas para o
+    líder)
+    🟢 FAZER: [Back-end] Criar endpoint DELETE /meta/:id/participante/:userId .
+    🟢 FAZER: [Back-end] Implementar validação de permissão (verificar se o solicitante é o líder
+🟢 RF_07: Aplicar Regra de Penalidade
+    🟢 Ao remover um participante, o sistema deve calcular a penalidade (ex: 20% do valor já contribuído) e
+    aplicar esse valor ao saldo total da meta.
+    🟢 FAZER: [Back-end] Implementar lógica de cálculo de penalidade (20%) no momento da
+    remoção (RF_06).
+    🟢 FAZER: [Back-end] Garantir que o valor da penalidade seja aplicado ao saldo total da meta.
+    🟢 FAZER: [Back-end] Garantir que esta operação seja atômica (feita em uma transação).
 🔶 RF_08: Editar Informações da Meta
-O sistema deve permitir que o líder edite informações básicas da meta (ex: título). A edição do valoralvo e da data final será bloqueada após a entrada do segundo membro.
-🟡 FAZER: [Front-end] Criar formulário de edição de meta (título).
-🟡 FAZER: [Back-end] Criar endpoint PUT /meta/:id .
-🟡 FAZER: [Back-end] Implementar lógica de bloqueio de edição (valor/data) se
+    O sistema deve permitir que o líder edite informações básicas da meta (ex: título). A edição do valoralvo e da data final será bloqueada após a entrada do segundo membro.
+    🟡 FAZER: [Front-end] Criar formulário de edição de meta (título).
+    🟡 FAZER: [Back-end] Criar endpoint PUT /meta/:id .
+    🟡 FAZER: [Back-end] Implementar lógica de bloqueio de edição (valor/data) se
 "meta.LiderId" > "usuario".
-
-🔶 RF_09: Registro de Contribuição
-O sistema deve permitir que cada participante marque sua contribuição mensal como "realizada".
-🟡 FAZER: [Front-end] Criar botão/ação para "Marcar como realizada" no dashboard.
-🟡 FAZER: [Back-end] Criar endpoint para registrar a contribuição do usuário.
-🟡 FAZER: [Back-end] Atualizar o status do membro e disparar o recálculo do progresso (RF_05).
-
+🟢 RF_09: Registro de Contribuição
+    O sistema deve permitir que cada participante marque sua contribuição mensal como "realizada".
+    🟢 FAZER: [Back-end] Criar endpoint para registrar a contribuição do usuário.
+    🟢 FAZER: [Back-end] Atualizar o status do membro e disparar o recálculo do progresso (RF_05).
 🔶 RF_10: Histórico de Metas
-O sistema deve exibir uma lista de metas concluídas ou arquivadas pelo usuário.
-🟡 FAZER: [Front-end] Criar página/seção "Minhas Metas Históricas".
-🟡 FAZER: [Back-end] Adicionar status "concluída" ou "arquivada" na tabela de metas.
-🟡 FAZER: [Back-end] Criar endpoint para consultar metas inativas.
+    O sistema deve exibir uma lista de metas concluídas ou arquivadas pelo usuário.
+    🟡 FAZER: [Front-end] Criar página/seção "Minhas Metas Históricas".
+    🟡 FAZER: [Back-end] Adicionar status "concluída" ou "arquivada" na tabela de metas.
+    🟡 FAZER: [Back-end] Criar endpoint para consultar metas inativas.

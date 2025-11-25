@@ -1,31 +1,6 @@
 {
   "usuarios": [
     {
-      "id": "1b9b",
-      "nomeUsuario": "Valeria",
-      "senhaUsuario": "1234",
-      "saldoUsuario": 0,
-      "emailUsuario": "",
-      "idadeUsuario": ""
-    },
-    {
-      "id": "efb4",
-      "nomeUsuario": "Paulo",
-      "senhaUsuario": "1234",
-      "saldoUsuario": 0,
-      "emailUsuario": "",
-      "idadeUsuario": ""
-    },
-    {
-      "id": "2034",
-      "nomeUsuario": "henrique",
-      "senhaUsuario": "peidoleite",
-      "saldoUsuario": 0,
-      "idadeUsuario": "23",
-      "emailUsuario": "michel@viadin.com",
-      "imagemUsuario": "https://avatars.githubusercontent.com/u/157776275?v=4"
-    },
-    {
       "id": "bacb",
       "nomeUsuario": "Schug",
       "senhaUsuario": "1234",
@@ -38,400 +13,57 @@
       "id": "07ec",
       "nomeUsuario": "joca",
       "senhaUsuario": "1234",
-      "saldoUsuario": 0,
+      "saldoUsuario": 200,
       "idadeUsuario": "18",
       "emailUsuario": "joaquim@gmail.com",
-      "imagemUsuario": "https://pbs.twimg.com/media/EcyqZ1IX0AE_gxi.jpg"
+      "imagemUsuario": "###"
     },
     {
-      "id": "8a6c",
-      "nomeUsuario": "Karen",
+      "id": "0000",
+      "nomeUsuario": "Saldo",
+      "senhaUsuario": "0000",
+      "saldoUsuario": 0,
+      "idadeUsuario": "00",
+      "emailUsuario": ""
+    },
+    {
+      "id": "4511",
+      "nomeUsuario": "Camila Viana",
       "senhaUsuario": "1234",
       "saldoUsuario": 0,
-      "idadeUsuario": "22",
-      "emailUsuario": "karen@gmail.com",
-      "imagemUsuario": "https://media.licdn.com/dms/image/v2/D4D03AQFKKA47-AZS9w/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1714400661029?e=1764806400&v=beta&t=aEQNBvzAGdDmCWkuNUZlXVS_rSk4UB3huP5PzDReg50"
+      "idadeUsuario": "26",
+      "emailUsuario": "camila@email.com",
+      "imagemUsuario": "https://images.pexels.com/photos/1239288/pexels-photo-1239288.jpeg?_gl=1*90kxw6*_ga*NzMwMTQ0NDUzLjE3NjI5NjA3MDI.*_ga_8JE65Q40S6*czE3NjQwNzU4OTEkbzIkZzEkdDE3NjQwNzU5MDEkajUwJGwwJGgw"
     },
     {
-      "id": "150b",
-      "nomeUsuario": "Henrique muito ticudo",
-      "senhaUsuario": "12345",
+      "id": "778e",
+      "nomeUsuario": "Carlos Viana",
+      "senhaUsuario": "1234",
       "saldoUsuario": 0,
-      "idadeUsuario": "23",
-      "emailUsuario": "henriquefoda123@gmail.com",
-      "imagemUsuario": "https://avatars.githubusercontent.com/u/157776275?v=4"
+      "idadeUsuario": "56",
+      "emailUsuario": "carlos@email.com",
+      "imagemUsuario": "https://images.pexels.com/photos/3783239/pexels-photo-3783239.jpeg?_gl=1*1s3tzfp*_ga*NzMwMTQ0NDUzLjE3NjI5NjA3MDI.*_ga_8JE65Q40S6*czE3NjQwNzU4OTEkbzIkZzEkdDE3NjQwNzY0NTEkajMyJGwwJGgw"
     }
   ],
   "metas": [
     {
-      "id": "74d7",
-      "liderId": "efb4",
+      "id": "871b",
+      "liderId": "778e",
       "tipoMeta": "Viagem",
-      "titulo": "Paris",
-      "valorAlvo": 10000,
-      "periodoConclusao": "6",
-      "status": "Concluída",
-      "linkConvite": "8350",
-      "imagem": "https://images.pexels.com/photos/386009/pexels-photo-386009.jpeg?_gl=1*1lfkqwv*_ga*NzMwMTQ0NDUzLjE3NjI5NjA3MDI.*_ga_8JE65Q40S6*czE3NjI5NjA3MDEkbzEkZzEkdDE3NjI5NjA3MTYkajQ1JGwwJGgw"
-    },
-    {
-      "id": "08e3",
-      "liderId": "2034",
-      "tipoMeta": "Formatura",
-      "titulo": "Formatura ADS 2027",
-      "valorAlvo": 5500,
-      "periodoConclusao": "24",
-      "status": "ativo",
-      "linkConvite": "86",
-      "imagem": "https://images.pexels.com/photos/1205651/pexels-photo-1205651.jpeg?_gl=1*1x2nsfc*_ga*NzMwMTQ0NDUzLjE3NjI5NjA3MDI.*_ga_8JE65Q40S6*czE3NjI5NjA3MDEkbzEkZzEkdDE3NjI5NjA4NzMkajMyJGwwJGgw"
-    },
-    {
-      "id": "d442",
-      "liderId": "2034",
-      "tipoMeta": "Viagem",
-      "titulo": "Formatura ADS 2027",
-      "valorAlvo": 5500,
-      "periodoConclusao": "9",
-      "status": "ativo",
-      "linkConvite": "2128",
-      "imagem": "https://images.pexels.com/photos/386009/pexels-photo-386009.jpeg?_gl=1*1lfkqwv*_ga*NzMwMTQ0NDUzLjE3NjI5NjA3MDI.*_ga_8JE65Q40S6*czE3NjI5NjA3MDEkbzEkZzEkdDE3NjI5NjA3MTYkajQ1JGwwJGgw.png"
-    },
-    {
-      "id": "1ff0",
-      "liderId": "2034",
-      "tipoMeta": "Viagem",
-      "titulo": "Teste",
-      "valorAlvo": 1.5,
-      "periodoConclusao": "3",
-      "status": "ativo",
-      "linkConvite": "879",
-      "imagem": "https://images.pexels.com/photos/386009/pexels-photo-386009.jpeg?_gl=1*1lfkqwv*_ga*NzMwMTQ0NDUzLjE3NjI5NjA3MDI.*_ga_8JE65Q40S6*czE3NjI5NjA3MDEkbzEkZzEkdDE3NjI5NjA3MTYkajQ1JGwwJGgw"
-    },
-    {
-      "id": "c39a",
-      "liderId": "2034",
-      "tipoMeta": "Aluguel",
-      "titulo": "Aluguel da casa 2026",
-      "valorAlvo": 2495,
-      "periodoConclusao": "6",
-      "status": "ativo",
-      "linkConvite": "6312",
-      "imagem": "https://images.pexels.com/photos/7579192/pexels-photo-7579192.jpeg?_gl=1*1q84cne*_ga*NzMwMTQ0NDUzLjE3NjI5NjA3MDI.*_ga_8JE65Q40S6*czE3NjI5NjA3MDEkbzEkZzEkdDE3NjI5NjA5MTkkajYwJGwwJGgw"
-    },
-    {
-      "id": "2c6d",
-      "liderId": "a9ca",
-      "tipoMeta": "Viagem",
-      "titulo": "Florianópolis FEV",
-      "valorAlvo": 2500,
-      "periodoConclusao": "3",
-      "status": "ativo",
-      "linkConvite": "2419",
-      "imagem": "https://images.pexels.com/photos/386009/pexels-photo-386009.jpeg?_gl=1*1lfkqwv*_ga*NzMwMTQ0NDUzLjE3NjI5NjA3MDI.*_ga_8JE65Q40S6*czE3NjI5NjA3MDEkbzEkZzEkdDE3NjI5NjA3MTYkajQ1JGwwJGgw"
-    },
-    {
-      "id": "b9ca",
-      "liderId": "bacb",
-      "tipoMeta": "Viagem",
-      "titulo": "Florianópolis",
+      "titulo": "teste",
       "valorAlvo": 5000,
       "periodoConclusao": "3",
-      "status": "Concluída",
-      "linkConvite": "423",
-      "imagem": "https://images.pexels.com/photos/386009/pexels-photo-386009.jpeg?_gl=1*1lfkqwv*_ga*NzMwMTQ0NDUzLjE3NjI5NjA3MDI.*_ga_8JE65Q40S6*czE3NjI5NjA3MDEkbzEkZzEkdDE3NjI5NjA3MTYkajQ1JGwwJGgw"
-    },
-    {
-      "id": "1ac9",
-      "liderId": "bacb",
-      "tipoMeta": "Aluguel",
-      "titulo": "Aluguel",
-      "valorAlvo": 3500,
-      "periodoConclusao": "3",
-      "status": "Concluída",
-      "linkConvite": "5492",
-      "imagem": "https://images.pexels.com/photos/7579192/pexels-photo-7579192.jpeg?_gl=1*1q84cne*_ga*NzMwMTQ0NDUzLjE3NjI5NjA3MDI.*_ga_8JE65Q40S6*czE3NjI5NjA3MDEkbzEkZzEkdDE3NjI5NjA5MTkkajYwJGwwJGgw"
-    },
-    {
-      "id": "e7fd",
-      "liderId": "bacb",
-      "tipoMeta": "Outros",
-      "titulo": "Pagamento do Curso ADS",
-      "valorAlvo": 3400,
-      "periodoConclusao": "6",
-      "status": "concluida",
-      "linkConvite": "6099",
-      "imagem": "https://images.pexels.com/photos/3943723/pexels-photo-3943723.jpeg?_gl=1*i4fecu*_ga*NzMwMTQ0NDUzLjE3NjI5NjA3MDI.*_ga_8JE65Q40S6*czE3NjI5NjA3MDEkbzEkZzEkdDE3NjI5NjA5NTIkajI3JGwwJGgw"
-    },
-    {
-      "id": "4a6d",
-      "liderId": "bacb",
-      "tipoMeta": "Formatura",
-      "titulo": "Formatura ADS",
-      "valorAlvo": 5500,
-      "periodoConclusao": "24",
       "status": "ativo",
-      "linkConvite": "8758",
-      "imagem": "https://images.pexels.com/photos/1205651/pexels-photo-1205651.jpeg?_gl=1*1x2nsfc*_ga*NzMwMTQ0NDUzLjE3NjI5NjA3MDI.*_ga_8JE65Q40S6*czE3NjI5NjA3MDEkbzEkZzEkdDE3NjI5NjA4NzMkajMyJGwwJGgw"
-    },
-    {
-      "id": "a544",
-      "liderId": "8a6c",
-      "tipoMeta": "Viagem",
-      "titulo": "SC 2026",
-      "valorAlvo": 3000,
-      "periodoConclusao": "3",
-      "status": "Concluída",
-      "linkConvite": "4563",
-      "imagem": "https://images.pexels.com/photos/386009/pexels-photo-386009.jpeg?_gl=1*1lfkqwv*_ga*NzMwMTQ0NDUzLjE3NjI5NjA3MDI.*_ga_8JE65Q40S6*czE3NjI5NjA3MDEkbzEkZzEkdDE3NjI5NjA3MTYkajQ1JGwwJGgw"
-    },
-    {
-      "id": "fb5d",
-      "liderId": "2034",
-      "tipoMeta": "Viagem",
-      "titulo": "Ziriguidum",
-      "valorAlvo": 2000,
-      "periodoConclusao": "3",
-      "status": "ativo",
-      "linkConvite": "8002",
+      "linkConvite": "3842",
       "imagem": "https://images.pexels.com/photos/386009/pexels-photo-386009.jpeg?_gl=1*1lfkqwv*_ga*NzMwMTQ0NDUzLjE3NjI5NjA3MDI.*_ga_8JE65Q40S6*czE3NjI5NjA3MDEkbzEkZzEkdDE3NjI5NjA3MTYkajQ1JGwwJGgw"
     }
   ],
   "participacoes": [
     {
-      "id": "p2",
-      "metaId": "b9ca",
-      "usuarioId": "8a6c",
-      "nomeUsuario": "Karen Costa"
-    },
-    {
-      "id": "p2",
-      "metaId": "101",
-      "usuarioId": "2",
-      "nomeUsuario": "claudio"
-    },
-    {
-      "id": "p1929",
-      "metaId": "1ff0",
-      "usuarioId": "2034"
-    },
-    {
-      "id": "4187",
-      "metaId": "c39a",
-      "usuarioId": "2034"
-    },
-    {
-      "id": "f82e",
-      "metaId": "2c6d",
-      "usuarioId": "a9ca"
-    },
-    {
-      "id": "331f",
-      "metaId": "b9ca",
-      "usuarioId": "bacb"
-    },
-    {
-      "id": "f92c",
-      "metaId": "1ac9",
-      "usuarioId": "bacb"
-    },
-    {
-      "id": "b93e",
-      "metaId": "e7fd",
-      "usuarioId": "bacb"
-    },
-    {
-      "id": "966f",
-      "metaId": "4a6d",
-      "usuarioId": "bacb"
-    },
-    {
-      "id": "519c",
-      "metaId": "a544",
-      "usuarioId": "8a6c"
-    },
-    {
-      "id": "e7d3",
-      "metaId": "4a6d",
-      "usuarioId": "2034"
-    },
-    {
-      "id": "72d2",
-      "metaId": "fb5d",
-      "usuarioId": "2034"
-    },
-    {
-      "id": "0829",
-      "metaId": "74d7",
-      "usuarioId": "2034"
-    },
-    {
-      "id": "6b94",
-      "metaId": "74d7",
-      "usuarioId": "150b"
-    },
-    {
-      "id": "5a45",
-      "metaId": "d442",
-      "usuarioId": "150b"
-    },
-    {
-      "id": "0e32",
-      "metaId": "08e3",
-      "usuarioId": "150b"
-    },
-    {
-      "id": "e0ac",
-      "metaId": "4a6d",
-      "usuarioId": "150b"
+      "id": "348f",
+      "metaId": "871b",
+      "usuarioId": "778e"
     }
   ],
-  "contribuicoes": [
-    {
-      "id": "c1",
-      "metaId": "100",
-      "usuarioId": "2",
-      "valor": 500,
-      "data": "2024-10-01T10:00:00Z"
-    },
-    {
-      "id": "c2",
-      "metaId": "101",
-      "usuarioId": "2",
-      "valor": 150,
-      "data": "2024-10-15T14:30:00Z"
-    },
-    {
-      "id": "c5",
-      "metaId": "",
-      "usuarioId": "",
-      "valor": 200,
-      "data": "2024-10-15T14:34:00Z"
-    },
-    {
-      "id": "6a0b",
-      "metaId": "b9ca",
-      "usuarioId": "bacb",
-      "valor": 500,
-      "data": "2025-11-17T00:30:23.346Z"
-    },
-    {
-      "id": "69d4",
-      "metaId": "b9ca",
-      "usuarioId": "bacb",
-      "valor": 1500,
-      "data": "2025-11-17T00:30:44.544Z"
-    },
-    {
-      "id": "6915",
-      "metaId": "b9ca",
-      "usuarioId": "8a6c",
-      "valor": 2000,
-      "data": "2025-11-17T00:30:44.544Z"
-    },
-    {
-      "id": "b6c0",
-      "metaId": "1ac9",
-      "usuarioId": "bacb",
-      "valor": 1000,
-      "data": "2025-11-17T00:35:45.581Z"
-    },
-    {
-      "id": "d315",
-      "metaId": "1ac9",
-      "usuarioId": "bacb",
-      "valor": 500,
-      "data": "2025-11-17T00:36:36.292Z"
-    },
-    {
-      "id": "05bb",
-      "metaId": "b9ca",
-      "usuarioId": "bacb",
-      "valor": 300,
-      "data": "2025-11-17T01:10:13.242Z"
-    },
-    {
-      "id": "21b8",
-      "metaId": "b9ca",
-      "usuarioId": "bacb",
-      "valor": 700,
-      "data": "2025-11-17T02:39:37.655Z"
-    },
-    {
-      "id": "84de",
-      "metaId": "1ac9",
-      "usuarioId": "bacb",
-      "valor": 2000,
-      "data": "2025-11-17T02:49:48.946Z"
-    },
-    {
-      "id": "77a2",
-      "metaId": "4a6d",
-      "usuarioId": "bacb",
-      "valor": 500,
-      "data": "2025-11-17T03:03:48.287Z"
-    },
-    {
-      "id": "d409",
-      "metaId": "4a6d",
-      "usuarioId": "bacb",
-      "valor": 500,
-      "data": "2025-11-17T03:04:10.522Z"
-    },
-    {
-      "id": "5db7",
-      "metaId": "a544",
-      "usuarioId": "8a6c",
-      "valor": 2000,
-      "data": "2025-11-17T03:33:17.504Z"
-    },
-    {
-      "id": "596f",
-      "metaId": "a544",
-      "usuarioId": "8a6c",
-      "valor": 1000,
-      "data": "2025-11-17T03:33:50.308Z"
-    },
-    {
-      "id": "965c",
-      "metaId": "4a6d",
-      "usuarioId": "2034",
-      "valor": 500,
-      "data": "2025-11-18T22:45:36.286Z"
-    },
-    {
-      "id": "287d",
-      "metaId": "fb5d",
-      "usuarioId": "2034",
-      "valor": 500,
-      "data": "2025-11-18T22:53:38.144Z"
-    },
-    {
-      "id": "8546",
-      "metaId": "74d7",
-      "usuarioId": "2034",
-      "valor": 1000,
-      "data": "2025-11-18T22:54:50.185Z"
-    },
-    {
-      "id": "ed17",
-      "metaId": "74d7",
-      "usuarioId": "150b",
-      "valor": 5000,
-      "data": "2025-11-18T22:57:56.154Z"
-    },
-    {
-      "id": "d834",
-      "metaId": "4a6d",
-      "usuarioId": "150b",
-      "valor": 925,
-      "data": "2025-11-18T23:00:00.847Z"
-    },
-    {
-      "id": "6b69",
-      "metaId": "74d7",
-      "usuarioId": "150b",
-      "valor": 4000,
-      "data": "2025-11-18T23:00:39.894Z"
-    }
-  ]
+  "contribuicoes": []
 }
